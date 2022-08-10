@@ -1,0 +1,133 @@
+
+.services{
+    
+    &__wrapper{
+
+    }
+
+    &__body{
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+
+        
+    }
+}
+
+.services-item{
+    margin: 0px 10px;
+    grid-column: span 2;
+    margin-bottom: 20px;
+    padding: 45px 43px;
+    border: 1px solid #000000;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    transition-duration: 0.3s;
+
+    
+    &__title{
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+    &__text{
+        font-size: 20px;
+        margin-bottom: 27px;
+        flex: 1 1 auto;
+        line-height: 1.5;
+        font-weight: 300;
+        max-height: 300px;
+        padding: 4px 0px;
+        p{
+
+            padding-right: 8px;
+        }
+        
+    }
+
+    &__btn{
+        transition-duration: 0.3s;
+        margin-left: auto;
+        font-size: 20px;
+        text-transform: uppercase;
+        
+        position: relative;
+        font-weight: 600;
+        
+    }
+    @media (min-width: 900px) {
+        &:hover{
+            background-color: #008C8C;
+            color: #fff;
+    
+            .services-item__btn{
+                color: #fff;
+    
+                &::before,&::after{
+                    background-color: #fff;
+                }
+            }
+        }   
+        
+    }
+
+
+    &:nth-child(5n+1), &:nth-child(5n+2){
+        grid-column: span 3;
+        // flex: 1 1 50px;
+        // width: 665px;
+        // min-width: 315px;
+        
+    }
+    
+    .simplebar-track.simplebar-vertical{
+        width: 7px;
+    }
+}
+
+
+
+@media (max-width: 1100px) {
+    .services-item{
+        padding: 22px 20px;
+
+
+        &__title{
+            font-size: 20px;
+            margin-bottom: 13px;
+        }
+        &__text{
+            font-size: 18px;
+        }
+        &__btn{
+            font-size: 16px;
+        }
+    }   
+}
+
+@media (max-width: 900px) {
+    .services{
+        &__body{
+            margin-top: 50px;
+        }
+    }
+
+    .services-item{
+        padding: 22px 20px;
+        margin: 0px 5px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 800px) {
+    .services-item{
+        // flex: 1 1 50px;
+        margin: 0px;
+        margin-bottom: 20px;
+        grid-column: span 6;
+        &:nth-child(5n+1), &:nth-child(5n+2){
+            grid-column: span 6;
+        }
+        
+    }
+}

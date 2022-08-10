@@ -1,0 +1,52 @@
+
+const bgLine = document.querySelector('.line-bg');
+
+document.addEventListener('scroll', (e) => {
+    const deg = Math.round(window.scrollY * 0.2)
+    bgLine.style.transform = `rotate(-${deg}deg)`
+})
+
+
+const form = document.querySelector('form');
+const inputs = form.querySelectorAll('input');
+const textareas = form.querySelectorAll('textarea');
+
+const formElements = [...inputs, ...textareas]
+const focusHandler = (input) => {
+    if(input.value !== '') {
+        console.dir(input)
+        input.nextElementSibling.classList.add('focus')
+    } else {
+        input.nextElementSibling.classList.remove('focus')
+    }
+}
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(formElements)
+    formElements.forEach(item => {
+        if(item.value == '' && item.classList.contains('required')){
+            item.parentElement.classList.add('error');
+        } else {
+            item.parentElement.classList.remove('error');
+        }
+    });
+})
+
+formElements.forEach(item => {
+    item.addEventListener('focus', () => {
+        item.parentElement.classList.add('focus-border')
+    })
+    item.addEventListener('blur', () => {
+        item.parentElement.classList.remove('focus-border')
+    })
+})
+
+inputs.forEach(input => {
+    input.addEventListener('change', () => {
+        focusHandler(input)
+    })
+});
+
+
