@@ -1,9 +1,43 @@
 
 const bgLine = document.querySelector('.line-bg');
-
 document.addEventListener('scroll', (e) => {
     const deg = Math.round(window.scrollY * 0.2)
     bgLine.style.transform = `rotate(-${deg}deg)`
+})
+
+const header = document.querySelector('.header')
+const headerNav = header.querySelector('.header nav');
+const burgerMenu  = document.querySelector('.burger-menu');
+const burgerIcon = header.querySelector('.burger-icon');
+
+const burgerMenuHandler = () => {
+    if(window.innerWidth < 900 && !headerNav.closest('.burger-menu')) {
+        const subMenus = headerNav.querySelectorAll('.sub-menu');
+        burgerMenu.insertAdjacentElement('beforeend', headerNav);
+        
+        subMenus.forEach(subMenu => {
+            const icon = subMenu.querySelector('.sub-menu__icon'); 
+            icon.addEventListener('click', () => {
+                subMenu.classList.toggle('active');
+            })
+        })
+        
+    } else  if(window.innerWidth > 700) {
+        burgerMenu.innerHTML = '';
+    }
+
+} 
+burgerMenuHandler()
+window.addEventListener('resize', () => {
+    console.log(burgerMenu)
+    burgerMenuHandler()
+})
+
+burgerIcon.addEventListener('click', () => {
+    header.classList.toggle('active');
+    burgerIcon.classList.toggle('active');
+    burgerMenu.classList.toggle('active');
+
 })
 
 
