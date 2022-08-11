@@ -77,7 +77,7 @@ formElements.forEach(item => {
     })
 })
 
-inputs.forEach(input => {
+formElements.forEach(input => {
     input.addEventListener('change', () => {
         focusHandler(input)
     })
